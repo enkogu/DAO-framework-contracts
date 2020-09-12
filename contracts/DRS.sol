@@ -3,9 +3,9 @@ pragma solidity >=0.4.22 <0.8.0;
 // Dispute resolution system
 contract DRS {
 	enum AgreementState {
-		Init;
-		Completed;
-		Reversed;
+		Init,
+		Completed,
+		Reversed
 	}
 
 	struct Agreement {
