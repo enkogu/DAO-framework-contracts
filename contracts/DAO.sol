@@ -1,7 +1,6 @@
 pragma solidity >=0.4.22 <0.8.0;
 
 
-// Decentralized autonomous organisation
 /*
 	Пока предустановленные роли:
 		Employee – все сотрудники
@@ -9,6 +8,7 @@ pragma solidity >=0.4.22 <0.8.0;
 		Owner – все, у кого есть доля компании
 */
 
+// Decentralized autonomous organisation
 contract DAO {
 	enum Roles {
 		Employee,
@@ -50,6 +50,7 @@ contract DAO {
 		chiefs[chiefsCount] = addr;
 	}
 
+	// TODO: connect contract
 	function sendShares (address addr, uint amount) public {
 		require(sharesAmountByShareholder[msg.sender] >= amount);
 		sharesAmountByShareholder[msg.sender] -= amount;
@@ -63,8 +64,42 @@ contract DAO {
 		// shareholders[shareholdersCount] = addr;
 	}
 
-	/*
+	// generalization: product levels
+	struct Product {
+		uint id;
+		string name;
+		uint price;
+		mapping(address => bool) owners;
+	}
 
-	*/
+	uint public productsCount;
+	mapping(uint => Product) products; // num to product
+
 	function addProduct () {}
+	function updateProduct () {}
+	function removeProduct () {}
+	function getProduct () {}
+
+	function buy () {}
+
+
+	// generalization: service levels (basic, pro, etc)
+	struct Service {
+		uint id;
+		string name;
+		uint price;
+		uint period;
+		mapping(address => uint) expireDates;
+	}
+
+	uint public servicesCount;
+	mapping(uint => Service) services; // num to product
+
+
+	function addService () {}
+	function updateService () {}
+	function removeService () {}
+	function getService () {}
+
+	function subscribe () {}
 }
